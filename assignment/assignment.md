@@ -1,5 +1,9 @@
 ## Test assignment
 
+You can use Docker compose or map to your own web server
+
+## Tasks
+
 1. Add authentication 
 2. Create entites 
     - Make - with Name and collection of models
@@ -8,6 +12,7 @@
 4. Create Make and Model administration 
 5. Create Fixture for Make and model reading data from make-model.json
 6. Upload code to new branch / send source code
+
 
 ## Sources
 
