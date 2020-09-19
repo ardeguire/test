@@ -9,10 +9,15 @@ class DefaultController extends AbstractController
 {
     public function index()
     {
-        $name = 'Adam';
+
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $user = $this->getUser();
+        $roles = $user->getRoles();
         $number = random_int(0,99);
         return $this->render('index/index.html.twig',[
-            'name' => $name,
-            'number' => $number]);
+            'name' => $user->getFirstName(),
+            'number' => $number,
+            'roles' => implode(', ', $roles)]);
     }
 }
