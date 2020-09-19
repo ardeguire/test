@@ -60,8 +60,8 @@ RUN buildDeps=" \
         pdo_mysql \
         sockets \
         zip \
-    && pecl install apcu-5.1.17 redis-5.1.1 \
-    && docker-php-ext-enable apcu redis \
+    && pecl install APCu-5.1.17 redis-5.1.1 \
+    && docker-php-ext-enable APCu redis \
     && cd /tmp \
     && git clone https://git.php.net/repository/pecl/networking/ssh2.git \
     && cd /tmp/ssh2/ \
