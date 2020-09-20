@@ -4,14 +4,21 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+
+/**
+ * @Route("/")
+ */
 class DefaultController extends AbstractController
 {
+    /**
+     * @Route("/")
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
     public function index()
     {
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
         $user = $this->getUser();
         $roles = $user->getRoles();
         $number = random_int(0,99);
