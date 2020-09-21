@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Make;
 use App\Entity\Model;
+use App\Repository\MakeRepository;
+use App\Repository\ModelRepository;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -17,7 +19,21 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+
+        //get count of makes
+        $count_makes = count($this->getDoctrine()
+            ->getRepository(Make::class)
+            ->findAll());
+
+        //get count of models
+        $count_models = count($this->getDoctrine()
+            ->getRepository(Model::class)
+            ->findAll());
+
+        //pass them to the dashboard index
+        return $this->render('admin/dashboard.html.twig', [
+            'count_makes' => $count_makes,
+            'count_models' => $count_models]);
     }
 
     public function configureDashboard(): Dashboard
