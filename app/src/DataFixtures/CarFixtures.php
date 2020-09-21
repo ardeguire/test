@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Make;
 use App\Entity\Model;
 
-class MakeFixtures extends Fixture
+class CarFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
