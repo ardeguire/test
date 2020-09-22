@@ -23,7 +23,8 @@ class Model
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Make", inversedBy="models")
+     * @ORM\ManyToOne(targetEntity=Make::class, inversedBy="models")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $make;
 
@@ -44,14 +45,15 @@ class Model
         return $this;
     }
 
-    public function setMake(Make $make)
-    {
-        $make->hasModel($this);
-        $this->make = $make;
-    }
-
-    public function getMake()
+    public function getMake(): ?Make
     {
         return $this->make;
+    }
+
+    public function setMake(?Make $make): self
+    {
+        $this->make = $make;
+
+        return $this;
     }
 }
